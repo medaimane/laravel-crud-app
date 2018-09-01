@@ -8,7 +8,7 @@ html {
 
 body {
   /* Show it is fixed to the top */
-  min-height: 75rem;
+  min-height: 65rem;
   padding-top: 2.5rem;
   /* Margin bottom by footer height */
   margin-bottom: 60px;

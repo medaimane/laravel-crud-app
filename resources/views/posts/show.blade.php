@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
+    <div style="margin:7px;">
+        <a href="{{url('posts')}}" class="btn btn-default">Go back</a>
+        <a href="/posts/{{$post->id}}/edit" class="btn btn-sm btn-info" role="button">Edit</a>
+        {!! Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'float-right']) !!}
+            {{ Form::hidden('_method', 'DELETE') }}
+            {{ Form::submit('Delete', ['class' => 'btn btn-sm btn-danger']) }}
+        {!! Form::close() !!}
+    </div>
     @if (!is_null($post))
         <div class="card">
             <div class="card-body">
@@ -18,7 +27,5 @@
             </div>
         </div>
     @endif
-    <div style="margin:7px;">
-        <a href="{{url('posts')}}" class="btn btn-default">Go back</a>
-    </div>
+</div>
 @endsection

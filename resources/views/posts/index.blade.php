@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
     <h3>Posts</h3>
-    <a href="/posts/create">add post</a>
+    <div>
+        <a href="/posts/create" class="btn btn-sm">add post</a>
+    </div>
     @if (!is_null($posts) && count($posts) > 0)
         <div class="row">
         @foreach ($posts as $post)
@@ -12,7 +15,6 @@
                         <h4 class="card-title">{{ $post->title }}</h4>
                         <p class="card-text">Written on {{ $post->created_at}}</p>
                         <a href="{{url('posts', $post->id)}}" class="btn btn-sm btn-success">Read more</a>
-                        <a href="#" class="btn btn-sm btn-danger" role="button">Delete</a>
                     </div>
                 </div>
             </div>
@@ -32,4 +34,5 @@
             </div>
         </div>
     @endif
+</div>
 @endsection

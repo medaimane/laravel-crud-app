@@ -1,3 +1,4 @@
+<div class="container">
 @if (count($errors))
     @foreach ($errors->all() as $error)
         <div class="alert alert-danger">
@@ -19,3 +20,10 @@
         <p>{{ session('error') }}</p>
     </div>
 @endif
+
+@if (session('status'))
+    <div class="alert alert-success" role="alert">
+        {{ session('status') }}
+    </div>
+@endif
+</div>

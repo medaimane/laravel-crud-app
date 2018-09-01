@@ -51,9 +51,12 @@ class PostsController extends Controller
         $post = new Post;
         $post->title = $request->input('title');
         $post->body = $request->input('body');
-        $post->save();
-
-        return redirect('/posts')->with('success', 'Post created with success');
+        $post->user_id = auth()->user()->id;
+        if($post->save()) {
+            return redirect('/posts')->with('success', 'Post created with success');
+        } else {
+            return redirect('/posts')->with('error', 'Post can\'t created');
+        }
     }
 
     /**
@@ -65,7 +68,11 @@ class PostsController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        return view('posts.show', compact('post'));
+        if(!is_null($post)){
+            return view('posts.show', compact('post'));
+        } else {
+            return redirect('/posts')->with('error', '504 : Post not found!.');
+        }
     }
 
     /**
@@ -76,7 +83,12 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        if(!is_null($post)) {
+            return view('posts.edit', compact('post'));
+        } else {
+            return redirect('/posts')->with('error', '504 : Post not found!.');
+        }
     }
 
     /**
@@ -88,7 +100,20 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+
+        $post = Post::findOrFail($id);
+        if(!is_null($post)) {
+            $post->title = $request->input('title');
+            $post->body = $request->input('body');
+            $post->update();
+            return redirect('/posts/'.$id)->with('success', 'Post updated with success');
+        } else {
+            return redirect('/posts/'.$id)->with('error', '504 : Post can\'t updated.');
+        }
     }
 
     /**
@@ -99,6 +124,12 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        if(!is_null($post)) {
+            $post->delete();
+            return redirect('/posts')->with('success', 'Post deleted with success');
+        } else {
+            return redirect('/posts/'.$id)->with('error', '504 : Post can\'t deleted.');
+        }
     }
 }

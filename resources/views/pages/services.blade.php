@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
     <h3>{{ $title }}</h3>
 
     @if(count($services) > 0)
@@ -12,4 +13,5 @@
     @else
         <p>No service</p>
     @endif
+</div>
 @endsection
