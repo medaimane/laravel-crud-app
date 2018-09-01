@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">{{ $post->title }}</h4>
-                <p class="card-text">{{ $post->body }}</p>
+                <p class="card-text">{!! $post->body !!}</p>
             </div>
             <div class="card-footer">
                 <small>Written on {{ $post->created_at}}</small>

@@ -7,6 +7,10 @@
         <title>{{config('app.name', 'MASApp')}}</title>
 
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
+
+        {{-- cdnjs --}}
+        <script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
+
     </head>
     <body>
         @include('includes.navbar')

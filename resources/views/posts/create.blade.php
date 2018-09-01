@@ -11,11 +11,14 @@
             </div>
             <div class="form-group">
                 {{ Form::label('body', 'Body')}}
-                {{ Form::textArea('body', '', ['class' => 'form-control', 'placeholder' => 'new post body content', 'required'=>'true'])}}
+                {{ Form::textArea('body', '', ['id' => 'bodyArea', 'class' => 'form-control', 'placeholder' => 'new post body content', 'required'=>'true'])}}
                 <small class="form-text text-muted">We'll give a body for your post.</small>
             </div>
             {{ Form::submit('Submit', ['class' => 'btn btn-success']) }}
             <a href="/posts" class="btn btn-info" role="button">Cancel</a>
         {!! Form::close() !!}
     </div>
+    <script>
+        CKEDITOR.replace( 'bodyArea' );
+    </script>
 @endsection

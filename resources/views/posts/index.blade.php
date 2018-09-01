@@ -12,27 +12,7 @@
                         <h4 class="card-title">{{ $post->title }}</h4>
                         <p class="card-text">Written on {{ $post->created_at}}</p>
                         <a href="{{url('posts', $post->id)}}" class="btn btn-sm btn-success">Read more</a>
-                        <a href="#" class="btn btn-sm btn-danger" role="button" data-toggle="modal" data-target="#delete{{$post->id}}">Delete</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Modal -->
-            <div class="modal fade" id="delete{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Delete Post</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        Are you sure to delete this post!
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-danger">Delete</button>
-                    </div>
+                        <a href="#" class="btn btn-sm btn-danger" role="button">Delete</a>
                     </div>
                 </div>
             </div>
