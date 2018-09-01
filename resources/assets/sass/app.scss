@@ -5,13 +5,16 @@
 // Variables
 @import 'variables';
 
+// Custom CSS
+@import 'custom';
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// Uikit
+// @import '~uikit/dist/css/uikit';
 
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
-
-// Custom CSS
-@import 'custom';
